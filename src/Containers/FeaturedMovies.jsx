@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFeaturedMovies } from '../Slices/FeaturedMovieSlicer';
-import { MoviesList } from './MoviesList';
+import { MoviesList } from '../Components/MoviesList';
+import { Grid, Typography } from '@material-ui/core';
 
 export const FeaturedMovies = () => {
     const dispatch = useDispatch();
     const movies = useSelector(state => state.featuredMovies);
     useEffect(() => {
         dispatch(fetchFeaturedMovies())
-    }, [])
+    }, [dispatch])
 
-    return <div className="container">
-            
-            <h2>Featured Movies</h2>
-            
-            {movies && <MoviesList movies={movies}/> }
-    </div>
+    return <Grid container>
+        <Typography variant="h4" >Featured Movies</Typography>
+            <Grid item>
+                {movies && <MoviesList movies={movies}/> }
+            </Grid>
+    </Grid>
+
 }

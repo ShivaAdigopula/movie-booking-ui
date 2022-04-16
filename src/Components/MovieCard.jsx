@@ -1,23 +1,22 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+
+
 import { useDispatch } from 'react-redux';
 import { fetchMovieDetails } from '../Slices/MovieDetailsSlicer';
 import { useNavigate } from 'react-router';
+import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
 
-export default function MovieCard({id, poster_path, title, vote_average, release_date}) {
+export default function MovieCard({ id, poster_path, title, vote_average, release_date }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onClickHandler = () => {
-      dispatch(fetchMovieDetails(id));
-      navigate('/movie-details');
+    dispatch(fetchMovieDetails(id));
+    navigate('/movie-details');
 
   }
   return (
-    <Card sx={{ width: 245, height:275  }} key={id} onClick={onClickHandler}>
+    <Card sx={{ width: 245, height: 275 }}
+     key={id} onClick={onClickHandler} className="movie-card">
       <CardActionArea>
         <CardMedia
           component="img"
@@ -27,15 +26,32 @@ export default function MovieCard({id, poster_path, title, vote_average, release
           alt={title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-           <div className="container"> 
-           <div>Release Date: {release_date}</div>
-            <div>Rating: {vote_average}</div>
-           </div>
-          </Typography>
+          <Grid container>
+            <Grid item>
+              <Typography gutterBottom variant="h5" component="div">
+                {title}
+              </Typography>
+            </Grid>
+            <Grid item container alignItems="flex-start" justify="space-between" direction="row">
+              <Grid item>
+                <Typography variant="body2" color="text.secondary">
+
+                  <div>Release Date: {release_date}</div>
+
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="body2" color="text.secondary">
+
+
+                  <div>Rating: {vote_average}</div>
+
+                </Typography>
+              </Grid>
+
+
+            </Grid>
+          </Grid>
         </CardContent>
       </CardActionArea>
     </Card>

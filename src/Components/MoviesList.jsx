@@ -1,13 +1,14 @@
+import { Grid } from '@material-ui/core';
 import React from 'react';
 import MovieCard from './MovieCard';
 export const MoviesList = ({movies}) => {
-    return <div>
-        <div className="container">
-                    {
+    return (
+        <Grid container alignItems="flex-start" justify="flex-start" direction="row" spacing={2}>
+            {
                          movies.map(movie => {
-                            return <div className="item"><MovieCard {...movie}/></div>
+                            return <Grid item><MovieCard {...movie}/></Grid>
                         })
                     }
-            </div>
-        </div>
+        </Grid>
+    )
 }
