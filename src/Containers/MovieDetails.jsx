@@ -5,6 +5,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { ReviewPagination } from '../Components/ReviewPagination';
+import _ from 'lodash';
 
 export const MovieDetails = () => {
   const movieDetails = useSelector(state => state.movieDetails);
@@ -15,12 +16,12 @@ export const MovieDetails = () => {
   }
   return <>
     {
-      movieDetails && <Card>
+      !_.isEmpty( movieDetails) && (<Card>
         <Grid container alignItems="flex-start" justify="flex-start" direction="row" spacing={2}>
           <Grid item xs={12}  sm={6}lg={6}>
           <CardMedia
               component="img"
-              height="500"            
+                          
               image={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}
               alt={movieDetails.title}
             />
@@ -55,10 +56,10 @@ export const MovieDetails = () => {
 
 
         </Grid>
-      </Card>
+      </Card>)
       
 
     }
-    {movieDetails && <ReviewPagination movie_id={movieDetails.id}></ReviewPagination>}
+    {!_.isEmpty( movieDetails) && <ReviewPagination movie_id={movieDetails.id}></ReviewPagination>}
   </>
 }

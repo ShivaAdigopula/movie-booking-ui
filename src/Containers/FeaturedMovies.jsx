@@ -12,7 +12,9 @@ export const FeaturedMovies = () => {
     }, [dispatch])
 
     return <Grid container>
-        <Typography variant="h4" >Featured Movies</Typography>
+            <Grid item >
+            <Typography variant="h4" >Featured Movies</Typography>
+            </Grid>
             <Grid item>
                 {movies && <MoviesList movies={movies}/> }
             </Grid>
