@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-
+Deployed the app on https://shiva-adigopula-movie-booking-app.netlify.app/
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
