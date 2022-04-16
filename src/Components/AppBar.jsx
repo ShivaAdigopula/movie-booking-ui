@@ -12,7 +12,7 @@ export function ApplicationBar() {
         <Toolbar>
 
 
-          <Button ><Link className="link" to="/" >
+          <Button ><Link className="link"  onClick={() => navigate('/')>
             Home
   </Link></Button>
           <Button><Link className="link" onClick={() => navigate('/manage-bookings')} >
