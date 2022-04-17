@@ -2,6 +2,12 @@
 Deployed the app on https://shiva-adigopula-movie-booking-app.netlify.app/
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Tech Strategy
+Movie Booking App uses React as its library, maintains state of the components using State Management Tool called - Redux and uses Thunk as its middleware and Axios libary to access RESTful Webservice.
+Reusale UI components created for Movie Cards, Movie Booking Cards using Material-UI component Library.
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
