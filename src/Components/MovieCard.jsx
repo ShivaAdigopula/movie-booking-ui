@@ -15,7 +15,7 @@ export default function MovieCard({ id, poster_path, title, vote_average, releas
 
   }
   return (
-    <Card 
+    <Card sx={{ width: 245, height: 275 }}
      key={id} onClick={onClickHandler} className="movie-card">
       <CardActionArea>
         <CardMedia
