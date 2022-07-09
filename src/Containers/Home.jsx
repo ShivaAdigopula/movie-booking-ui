@@ -5,6 +5,7 @@ import { FeaturedMovies } from './FeaturedMovies';
 import { Search } from '../Components/Search';
 import { SearchedMovies } from '../Components/SearchedMovies';
 import { searchMovies } from '../Slices/MovieSearchSlicer';
+import { Grid } from '@material-ui/core';
 
 export function HomePage() {
     const [searchText, setSearchText] = useState(null);
@@ -22,8 +23,12 @@ export function HomePage() {
         onEnter={onSearchSubmitHandler} 
         placeholder={'Find movie...'}/>
 
-        {searchResults.length !== 0 && <SearchedMovies/> }
+        <Grid container justifyContent='center' alignContent='center' alignItems='center' direction='row'>
+            <Grid item>
+            {searchResults.length !== 0 && <SearchedMovies/> }
         {searchResults.length === 0 && <FeaturedMovies/> }
+        </Grid>
+       </Grid>
         
     </>
 }

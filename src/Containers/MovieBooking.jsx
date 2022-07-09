@@ -178,7 +178,7 @@ export const MovieBooking = () => {
                 <Card>
                     <CardMedia
                         component="img"
-                        height="350"
+                        height="380"
                         width="300"
                         image={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}
                         alt={movieDetails.title}
@@ -189,7 +189,7 @@ export const MovieBooking = () => {
             <Grid item>
                 <Card className="booking-form-card">
                     <Typography variant="h5"> Book Movie</Typography>
-                    <Grid container alignItems="center" justify="center" direction="column">
+                    <Grid container alignItems="center" justify="center" direction="column" spacing={1}>
 
                         <Grid item className="booking-form-item">
                             <TextField

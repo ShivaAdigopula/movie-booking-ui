@@ -27,17 +27,15 @@ export const ManageBookings = () => {
         onSubmit={onSearchSubmitHandler} 
         onEnter={onSearchSubmitHandler}
         placeholder= {'Search Bookings...!'}/>
-        <Grid container>
-        
-        <Grid item container alignItems="flex-start" justify="flex-start" direction="row" >
+        <Grid container justifyContent='space-around' alignContent='center' alignItems='center'>
+
         {bookings && 
             bookings.map(booking => {
                return <MovieBookingCard booking={booking}/>
             })
         }
         
-
-        </Grid>
+        
         
         </Grid>
         {bookings.length === 0 && 

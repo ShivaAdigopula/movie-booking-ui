@@ -8,7 +8,7 @@ export const SearchedMovies = () => {
     const movies = useSelector(state => state.searchResults);
 
     return <Grid container>
-        <Typography variant="h4" >Search Results</Typography>
+        
         <Grid item>
             {movies && <MoviesList movies={movies} />}
         </Grid>
