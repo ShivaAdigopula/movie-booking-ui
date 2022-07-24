@@ -1,16 +1,23 @@
-import { Grid, Typography } from '@material-ui/core';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { MoviesList } from './MoviesList';
+import { Alert } from "@material-ui/lab";
+import React from "react";
+import { useSelector } from "react-redux";
+import { MoviesList } from "./MoviesList";
 
 export const SearchedMovies = () => {
+  const {
+    results = [],
+    loading,
+    error,
+  } = useSelector((state) => state.searchResults);
 
-    const movies = useSelector(state => state.searchResults);
+  if (error) {
+    return <Alert severity="error">Something went wrong ...!!</Alert>;
+  }
 
-    return <Grid container>
-        <Typography variant="h4" >Search Results</Typography>
-        <Grid item>
-            {movies && <MoviesList movies={movies} />}
-        </Grid>
-    </Grid>
-}
+  return (
+    <>
+      {loading && <div>Loading ...</div>}
+      {results && !loading && <MoviesList movies={results} />}
+    </>
+  );
+};

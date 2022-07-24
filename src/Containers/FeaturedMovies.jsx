@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchFeaturedMovies } from '../Slices/FeaturedMovieSlicer';
-import { MoviesList } from '../Components/MoviesList';
-import { Grid, Typography } from '@material-ui/core';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFeaturedMovies } from "../Slices/FeaturedMovieSlicer";
+import { MoviesList } from "../Components/MoviesList";
+import { Alert } from "@material-ui/lab";
 
 export const FeaturedMovies = () => {
-    const dispatch = useDispatch();
-    const movies = useSelector(state => state.featuredMovies);
-    useEffect(() => {
-        dispatch(fetchFeaturedMovies())
-    }, [dispatch])
+  const dispatch = useDispatch();
+  const { results= [], loading, error } = useSelector(
+    (state) => state.featuredMovies
+  );
+  useEffect(() => {
+    dispatch(fetchFeaturedMovies());
+  }, [dispatch]);
 
-    return <Grid container>
-            <Grid item >
-            <Typography variant="h4" >Featured Movies</Typography>
-            </Grid>
-            <Grid item>
-                {movies && <MoviesList movies={movies}/> }
-            </Grid>
-    </Grid>
+  if (error) {
+    return <Alert severity="error">Something went wrong ...!!</Alert>;
+  }
 
-}
+  return (
+    <>
+      {loading && <div>Loading ...</div>}
+      {results && !loading && <MoviesList movies={results} />}
+    </>
+  );
+};
