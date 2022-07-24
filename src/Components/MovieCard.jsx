@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { useDispatch } from "react-redux";
-import { fetchMovieDetails } from "../Slices/MovieDetailsSlicer";
 import { useNavigate } from "react-router";
 import { Typography } from "@material-ui/core";
 import {
@@ -19,11 +17,10 @@ export default function MovieCard({
   vote_average,
   release_date,
 }) {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const onClickHandler = () => {
-    dispatch(fetchMovieDetails(id));
-    navigate("/movie-details");
+    // dispatch(fetchMovieDetails(id));
+    navigate(`/movie-details/${id}`);
   };
   return (
     <FiCard key={id} onClick={onClickHandler} className="movie-card">

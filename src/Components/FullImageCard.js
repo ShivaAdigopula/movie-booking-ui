@@ -14,7 +14,7 @@ export const FiCard = withStyles({
 export const FiCardActionArea = withStyles({
   root: {
     position: "relative",
-    height: '100%'
+    height: "100%",
   },
 })(CardActionArea);
 
@@ -26,11 +26,11 @@ export const FiCardActions = withStyles({
 
 export const FiCardContent = withStyles({
   root: {
-    top:0,
+    top: 0,
     position: "absolute",
     backgroundColor: "rgb(0,0,0, 0.5)",
-    color: 'white',
-    width: "100%"
+    color: "white",
+    width: "100%",
   },
 })(CardContent);
 

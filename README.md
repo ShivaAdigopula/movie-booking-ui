@@ -1,12 +1,9 @@
-
 Deployed the app on https://shiva-adigopula-movie-booking-app.netlify.app/
 
-
 # Tech Strategy
+
 Movie Booking App bootstraped with React Libary, maintains state of the components using State Management Tool called - Redux and uses Thunk as its middleware and Axios libary to access RESTful Webservice.
 Reusable UI components created Material-UI component Library.
-
-
 
 ## Available Scripts
 
