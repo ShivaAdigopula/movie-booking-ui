@@ -4,8 +4,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
-  Grid,
-  Typography,
+  Grid
 } from "@material-ui/core";
 import moment from "moment";
 import React from "react";
