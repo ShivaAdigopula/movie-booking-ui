@@ -8,7 +8,7 @@ import { searchMovies } from '../Slices/MovieSearchSlicer';
 
 export function HomePage() {
     const [searchText, setSearchText] = useState(null);
-    const searchResults = useSelector(state => state.searchResults);
+    const { results } = useSelector(state => state.searchResults);
     const dispatch = useDispatch();
     const onSearchSubmitHandler = () => {
         dispatch(searchMovies(searchText));
@@ -22,8 +22,8 @@ export function HomePage() {
         onEnter={onSearchSubmitHandler} 
         placeholder={'Find movie...'}/>
 
-        {searchResults.length !== 0 && <SearchedMovies/> }
-        {searchResults.length === 0 && <FeaturedMovies/> }
+        {results.length !== 0 && <SearchedMovies/> }
+        {results.length === 0 && <FeaturedMovies/> }
         
     </>
 }

@@ -7,7 +7,6 @@ const GET_MOVIE_DETAILS_ENDPOINT = "/movies";
 export const getFeaturedMovies = async () => {
     try {
         const response = await AxiosInstance.get(GET_FEATURED_MOVIES_ENDPOINT);
-        console.log(response);
         if (response) {
             return response.data.results;
         }
@@ -33,7 +32,6 @@ export const getMovieDetails = async (id) => {
 export const searchMoviesAsync = async (query) => {
     try {
         const response = await AxiosInstance.get(`/movies/search?query=${encodeURIComponent(query)}`);
-        console.log(response);
         if (response) {
             return response.data.results;
         }

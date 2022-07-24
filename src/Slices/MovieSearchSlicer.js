@@ -5,21 +5,28 @@ export const searchMovies = createAsyncThunk("movie/searchMovies", async (query)
     return await searchMoviesAsync(query);
 });
 
+function filterForMoviesWithBackdrop(payload) {
+    return payload.filter((mv) => mv.backdrop_path != null);
+}
+
 export const searchMoviesSlicer = createSlice({
     name: 'movie',
-    initialState: [],
+    initialState: {
+        results: [],
+        loading: false,
+        error:false
+    },
     reducers: {
     },
     extraReducers: {
         [searchMovies.pending]: () => {
-            console.log("Pending");
+            return {results: [], loading: true, error:false}
         },
         [searchMovies.fulfilled]: (state, { payload }) => {
-            console.log("Fetched Successfully!");
-            return [...payload.splice(0,10)];
+            return {results: filterForMoviesWithBackdrop([...payload.splice(0, 10)]), loading: false, error:false}
         },
         [searchMovies.rejected]: () => {
-            console.log("Rejected!");
+            return {results: [], loading: false, error:true}
         }
     },
 })
