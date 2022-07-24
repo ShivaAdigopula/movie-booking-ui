@@ -1,65 +1,74 @@
-
-import { Button, Card, CardMedia, Grid, Typography } from '@material-ui/core';
-import { Rating } from '@material-ui/lab';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { ReviewPagination } from '../Components/ReviewPagination';
-import _ from 'lodash';
+import { Button, Typography } from "@material-ui/core";
+import { Rating } from "@material-ui/lab";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { ReviewPagination } from "../Components/ReviewPagination";
+import _ from "lodash";
+import { fetchMovieDetails } from "../Slices/MovieDetailsSlicer";
+import { useParams } from "react-router-dom";
 
 export const MovieDetails = () => {
-  const movieDetails = useSelector(state => state.movieDetails);
+  const movieDetails = useSelector((state) => state.movieDetails);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { movieId } = useParams();
 
-  const onBookingHandler = () => {
-    navigate("/movie-booking");
-  }
-  return <>
-    {
-      !_.isEmpty( movieDetails) && (<Card>
-        <Grid container alignItems="flex-start" justify="flex-start" direction="row" spacing={2}>
-          <Grid item xs={12}  sm={6}lg={6}>
-          <CardMedia
-              component="img"
-                          
-              image={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}
+  useEffect(() => {
+    console.log({ movieId });
+    dispatch(fetchMovieDetails(movieId));
+  }, [dispatch, movieId]);
+
+  const onBookingHandler = (id) => {
+    navigate(`/movie-booking/${id}`);
+  };
+  return (
+    <>
+      {!_.isEmpty(movieDetails) && (
+        <div className="flex flex-col lg:flex-row justify-center gap-5 m-5 bg-white p-5 rounded-sm">
+          <div>
+            <img
+              style={{
+                width: 350,
+                height: 350,
+              }}
+              src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}
               alt={movieDetails.title}
             />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={6}>
-            <Grid container  alignItems="flex-start" justify="flex-start" direction="column" spacing={2}>
-            <Grid item>
-              <Typography variant="h4"> {movieDetails.title}</Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body1"><b>Run time </b> {movieDetails.runtime} mins</Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body1"><b>Release Date</b> {movieDetails.release_date}</Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body1"><b>Genre</b>  {movieDetails.genres && movieDetails.genres.map(genre => genre.name).join(",")}</Typography>
-            </Grid>
-            <Grid item>
-              <Rating name="read-only" value={movieDetails.vote_average / 2} readOnly />
-            </Grid>
-            <Grid item>
-              {movieDetails.overview}
-            </Grid>
-            <Grid item>
-              <Button color="primary" variant="contained"
-                onClick={onBookingHandler}> Book the tickets </Button>
-            </Grid>
-            </Grid>
-            
-          </Grid>
-
-
-        </Grid>
-      </Card>)
-      
-
-    }
-    {!_.isEmpty( movieDetails) && <ReviewPagination movie_id={movieDetails.id}></ReviewPagination>}
-  </>
-}
+          </div>
+          <div className="flex flex-col justify-start gap-5">
+            <Typography variant="h4"> {movieDetails.title}</Typography>
+            <Typography variant="body1">
+              <b>Run time </b> {movieDetails.runtime} mins
+            </Typography>
+            <Typography variant="body1">
+              <b>Release Date</b> {movieDetails.release_date}
+            </Typography>
+            <Typography variant="body1">
+              <b>Genre</b>{" "}
+              {movieDetails.genres &&
+                movieDetails.genres.map((genre) => genre.name).join(",")}
+            </Typography>
+            <Rating
+              name="read-only"
+              value={movieDetails.vote_average / 2}
+              readOnly
+            />
+            <Typography variant="body2">{movieDetails.overview}</Typography>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={() => onBookingHandler(movieDetails.id)}
+            >
+              {" "}
+              Book the tickets{" "}
+            </Button>
+          </div>
+        </div>
+      )}
+      {!_.isEmpty(movieDetails) && (
+        <ReviewPagination movie_id={movieDetails.id}></ReviewPagination>
+      )}
+    </>
+  );
+};

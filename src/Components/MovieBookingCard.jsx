@@ -4,7 +4,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
-  Grid
+  Grid,
 } from "@material-ui/core";
 import moment from "moment";
 import React from "react";
@@ -34,41 +34,42 @@ export const MovieBookingCard = ({ booking }) => {
           alt={booking.title}
         />
 
-              <CardContent>
-              <Grid
-          container
-          alignItems="flex-start"
-          justify="center"
-          direction="column"
-        >
-          
+        <CardContent>
           <Grid
-            item
             container
             alignItems="flex-start"
-            justify="flex-start"
+            justify="center"
             direction="column"
           >
-            <Grid item>
-              Booked By : {`${booking.first_name} ${booking.last_name}`}
-            </Grid>
-            <Grid item>Number Of Seats : {booking.number_of_seats}</Grid>
-            <Grid item>Date Of Booking : {booking.date}</Grid>
-            <Grid item>Status : {booking.status}</Grid>
-            {booking.status === "BOOKED" && moment(booking.date , 'DD-MM-YYYY').toDate() > new Date() &&  (
+            <Grid
+              item
+              container
+              alignItems="flex-start"
+              justify="flex-start"
+              direction="column"
+            >
               <Grid item>
-                <Button
-                  color="primary"
-                  variant="outlined"
-                  onClick={cancelHandler}
-                >
-                  Cancel Booking
-                </Button>
+                Booked By : {`${booking.first_name} ${booking.last_name}`}
               </Grid>
-            )}
+              <Grid item>Email : {booking.email}</Grid>
+              <Grid item>Number Of Seats : {booking.number_of_seats}</Grid>
+              <Grid item>Date Of Booking : {booking.date}</Grid>
+              <Grid item>Status : {booking.status}</Grid>
+              {booking.status === "BOOKED" &&
+                moment(booking.date, "DD-MM-YYYY").toDate() > new Date() && (
+                  <Grid item>
+                    <Button
+                      color="primary"
+                      variant="outlined"
+                      onClick={cancelHandler}
+                    >
+                      Cancel Booking
+                    </Button>
+                  </Grid>
+                )}
+            </Grid>
           </Grid>
-        </Grid>
-       </CardContent>
+        </CardContent>
       </CardActionArea>
     </Card>
   );

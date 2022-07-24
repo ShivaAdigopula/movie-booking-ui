@@ -1,11 +1,10 @@
-
-import { Route, Routes } from 'react-router';
-import './App.css';
-import { MovieDetails } from './Containers/MovieDetails';
-import { HomePage } from './Containers/Home';
-import { MovieBooking } from './Containers/MovieBooking';
-import { ManageBookings } from './Containers/ManageBookings';
-import { ApplicationBar } from './Components/AppBar';
+import { Route, Routes } from "react-router";
+import "./App.css";
+import { MovieDetails } from "./Containers/MovieDetails";
+import { HomePage } from "./Containers/Home";
+import { MovieBooking } from "./Containers/MovieBooking";
+import { ManageBookings } from "./Containers/ManageBookings";
+import { ApplicationBar } from "./Components/AppBar";
 
 function App() {
   return (
@@ -14,11 +13,10 @@ function App() {
       <header className="App-header">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/movie-details" element={<MovieDetails />} />
-          <Route path="/movie-booking" element={<MovieBooking />} />
+          <Route path="/movie-details/:movieId" element={<MovieDetails />} />
+          <Route path="/movie-booking/:movieId" element={<MovieBooking />} />
           <Route path="/manage-bookings" element={<ManageBookings />} />
         </Routes>
-
       </header>
     </div>
   );

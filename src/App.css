@@ -37,13 +37,13 @@
 }
 
 .booking-form-card {
-   width:100%;
-   padding:20px;
+  width: 100%;
+  padding: 20px;
 }
 
 .booking-form-item {
-  width:300px;
-  margin:5px;
+  width: 300px;
+  margin: 5px;
 }
 
 .link {
@@ -52,41 +52,38 @@
   text-decoration: none !important;
 }
 
-
-
 .margin20 {
-  margin:20px;
+  margin: 20px;
 }
 .margin10 {
-  margin:10px;
+  margin: 10px;
 }
 .center {
   text-align: center;
 }
 
 .reviews {
-    width: 90vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .movie-review {
-  margin:10px;  
+  margin: 10px;
   padding: 2rem;
 }
 
 .movie-booking-card {
   width: 300px;
-  margin:10px;
+  margin: 10px;
   font-size: calc(5px + 1vmin);
 }
 
 .movie-card {
-  width:300px;
-  height:400px;
+  width: 300px;
+  height: 400px;
 }
 
 .item {

@@ -7,12 +7,12 @@ import { searchMoviesReducer } from "./Slices/MovieSearchSlicer";
 import { movieBookingsReducer } from "./Slices/ManageMovieBookingsSlicer";
 
 export const store = configureStore({
-    reducer: {
-        featuredMovies: featuredMovieReducer,
-        movieDetails: movieDetailsReducer,
-        reviews: movieReviewsReducer,
-        searchResults: searchMoviesReducer,
-        movieBooking: doMovieBookingReducer,
-        bookings: movieBookingsReducer
-    }
-})
+  reducer: {
+    featuredMovies: featuredMovieReducer,
+    movieDetails: movieDetailsReducer,
+    reviews: movieReviewsReducer,
+    searchResults: searchMoviesReducer,
+    movieBooking: doMovieBookingReducer,
+    bookings: movieBookingsReducer,
+  },
+});

@@ -6,9 +6,11 @@ import { Alert } from "@material-ui/lab";
 
 export const FeaturedMovies = () => {
   const dispatch = useDispatch();
-  const { results= [], loading, error } = useSelector(
-    (state) => state.featuredMovies
-  );
+  const {
+    results = [],
+    loading,
+    error,
+  } = useSelector((state) => state.featuredMovies);
   useEffect(() => {
     dispatch(fetchFeaturedMovies());
   }, [dispatch]);
